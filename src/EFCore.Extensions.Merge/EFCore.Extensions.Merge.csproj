@@ -6,4 +6,10 @@
     <AssemblyName>EntityFrameworkCore.Extensions.Merge</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FastMember" Version="1.4.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.4" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
+  </ItemGroup>
+
 </Project>
