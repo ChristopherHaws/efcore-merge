@@ -1,0 +1,25 @@
+<Project>
+
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Year>$([System.DateTime]::Now.ToString(yyyy))</Year>
+    <DayOfYear>$([System.DateTime]::Now.DayOfYear.ToString(000))</DayOfYear>
+    <Month>$([System.DateTime]::Now.ToString(MM))</Month>
+    <Day>$([System.DateTime]::Now.ToString(dd))</Day>
+    <TimeOfDay>$([System.DateTime]::Now.ToString(HHmm))</TimeOfDay>
+    <VersionPrefix>1.0.0</VersionPrefix>
+    <RevisionForDay>01</RevisionForDay>
+    <PreReleaseVersionLabel>ci</PreReleaseVersionLabel>
+    <VersionSuffix>$(PreReleaseVersionLabel)-$(Year)$(DayOfYear)$(RevisionForDay)</VersionSuffix>
+    <InformationalVersion>$(VersionPrefix)-$(VersionSuffix)</InformationalVersion>
+    <VersionSuffix Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(PreReleaseVersionLabel)-$(BUILD_BUILDNUMBER)</VersionSuffix>
+    <Version Condition=" '$(VersionSuffix)' != '' ">$(VersionPrefix)-$(VersionSuffix)</Version>
+    <Version Condition=" '$(Version)' == '' ">$(VersionPrefix)</Version>
+    <InformationalVersion Condition=" '$(BUILD_SOURCEVERSION)' != '' ">$(Version) - Commit Hash: $(BUILD_SOURCEVERSION)</InformationalVersion>
+  </PropertyGroup>
+
+</Project>

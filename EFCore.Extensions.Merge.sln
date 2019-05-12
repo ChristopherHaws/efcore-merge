@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFCore.Extensions.Merge", "src\EFCore.Extensions.Merge\EFCore.Extensions.Merge.csproj", "{0F468E92-FED5-43DE-9ED3-AABE12E62F1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C9318B5-5418-47A3-BA24-61F032D7C1A1}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F39C9F4C-CBA6-4C3C-BD95-8E381A4EEDD4}"
 EndProject
@@ -13,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
 		Directory.Build.props = Directory.Build.props
 		LICENSE.md = LICENSE.md
 		README.md = README.md
