@@ -8,6 +8,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 'true'
+  NUGET_XMLDOC_MODE: 'skip'
 
 steps:
 - task: UseDotNet@2
