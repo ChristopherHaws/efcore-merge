@@ -15,9 +15,10 @@ variables:
 
 steps:
 - task: UseDotNet@2
+  displayName: Use dotnet 3.0.100-preview5-011568
   inputs:
-    packageType: 'sdk'
-    version: '3.0.100-preview5-011568'
+    packageType: sdk
+    version: 3.0.100-preview5-011568
     includePreviewVersions: true
 
 - task: DotNetCoreCLI@2
@@ -34,12 +35,14 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
 - task: DotNetCoreCLI@2
+  displayName: Pack
   inputs:
     command: 'pack'
     feedsToUse: 'select'
@@ -48,6 +51,7 @@ steps:
     versioningScheme: 'off'
 
 - task: NuGetCommand@2
+  displayName: Publish
   inputs:
     command: 'push'
     feedsToUse: 'select'
