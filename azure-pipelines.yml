@@ -1,5 +1,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+name: $(Year:yy)$(DayOfYear)$(Rev:rr)
+
 trigger:
 - master
 
@@ -37,7 +39,13 @@ steps:
     projects: '**/*Tests/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
-- script: dotnet pack
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    feedsToUse: 'select'
+    packagesToPack: '**/*.csproj'
+    nobuild: true
+    versioningScheme: 'off'
 
 - task: NuGetCommand@2
   inputs:
