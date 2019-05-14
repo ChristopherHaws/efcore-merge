@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -39,10 +39,7 @@ namespace Microsoft.EntityFrameworkCore
 				Properties = entityType.GetProperties().Where(x => !x.IsConcurrencyToken).ToList()
 			};
 
-			if (context.Connection.State == ConnectionState.Closed)
-			{
-				await context.Connection.OpenAsync();
-			}
+			await context.Connection.EnsureOpenAsync();
 
 			var sw = Stopwatch.StartNew();
 			var createTempTableCommandText = $"SELECT TOP 0 * INTO {context.TempTableName} FROM [{context.DestinationSchemaName}].[{context.DestinationTableName}]";
